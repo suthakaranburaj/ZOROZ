@@ -1,43 +1,47 @@
-import mongoose, {Schema} from "mongoose";
-import jwt from "jsonwebtoken"
-import bcrypt from "bcrypt"
+import mongoose, { Schema } from "mongoose";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 const userSchema = new Schema(
     {
-        username: {
-            type: String,
-            required: true,
-            unique: true,
-            lowercase: true,
-            trim: true, 
-            index: true
-        },
         email: {
             type: String,
             required: true,
             unique: true,
-            lowecase: true,
-            trim: true, 
+            lowercase: true,  // fixed typo: 'lowecase' to 'lowercase'
+            trim: true
         },
-        fullName: {
+        name: {
             type: String,
             required: true,
-            trim: true, 
+            trim: true,
             index: true
         },
-        address:{
-            type:String,
-            required:true,
-            street: String,
-            city: String,
-            state: String,
-            zipCode: String,
-
+        address: {
+            street: { type: String, required: true },
+            city: { type: String, required: true },
+            state: { type: String, required: true },
+            zipCode: { type: String, required: true }
         },
-        phone:{
+        phoneNumber: {
             type: String,
-            required:true,
-            index:true,
+            required: true,
+            unique: true,
+            index: true
+        },
+        // phoneNumberOtp: {
+        //     type: Number
+        // },
+        emailVerified: {
+            type: Boolean,
+            default: false
+        },
+        // phoneVerified: {
+        //     type: Boolean,
+        //     default: false
+        // },
+        emailOtp: {
+            type: Number
         },
         orderHistory: [
             {
@@ -52,28 +56,25 @@ const userSchema = new Schema(
         refreshToken: {
             type: String
         },
-
-        role:{
-            type:String,
-            enum:['customer' , 'admin'],
+        role: {
+            type: String,
+            enum: ['customer', 'admin'],
             default: 'customer'
         },
-        wishlist:[
+        wishlist: [
             {
-                productId: String,
+                productId: String
             }
         ],
-
-        cart:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Cart'
+        cart: {
+            type: Schema.Types.ObjectId,
+            ref: 'Cart'
         }
-
     },
     {
         timestamps: true
     }
-)
+);
 
 userSchema.pre("save", async function (next) {
     if(!this.isModified("password")) return next();
@@ -91,8 +92,8 @@ userSchema.methods.generateAccessToken = function(){
         {
             _id: this._id,
             email: this.email,
-            username: this.username,
-            fullName: this.fullName
+            name: this.name,
+            phoneNumber: this.phoneNumber
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
@@ -111,6 +112,6 @@ userSchema.methods.generateRefreshToken = function(){
             expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
-};
+}
 
-export const User = mongoose.model("User", userSchema)
+export const User = mongoose.model("User", userSchema);
