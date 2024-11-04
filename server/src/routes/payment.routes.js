@@ -10,7 +10,7 @@ import { verifyJWT } from '../middlewares/auth.middleware.js'
 const router = Router();
 
 router.route('/initiate').post(verifyJWT,initiatePayment)
-router.route('/confirm').post(verifyJWT,getPaymentDetails)
-router.route('/:orderId').get(verifyJWT,confirmPayment)
+router.route('/confirm/:paymentId').post(verifyJWT,confirmPayment)
+router.route('/:paymentId').get(verifyJWT,getPaymentDetails)
 
 export default router
