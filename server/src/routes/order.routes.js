@@ -11,9 +11,9 @@ import { verifyJWT } from '../middlewares/auth.middleware.js'
 const router = Router();
 
 router.route('/place').post(verifyJWT,placeOrder)
-router.route('/order/:orderId').get(verifyJWT,getOrderDetails)
-router.route('/order/history').get(verifyJWT,getOrderHistory)
-router.route('/order/:orderId/status').put(verifyJWT,updateOrderStatus)
+router.route('/:orderId').get(verifyJWT,getOrderDetails)
+router.route('/:userId/history').get(verifyJWT,getOrderHistory)
+router.route('/:orderId/status').patch(verifyJWT,updateOrderStatus)
 
 
 export default router
