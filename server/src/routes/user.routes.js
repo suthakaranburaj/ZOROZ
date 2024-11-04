@@ -7,6 +7,7 @@ import {
     loginUser,
     refreshAccessToken,
     logout,
+    addUserWishlist,
 } from '../controllers/user.controller.js'
 
 import { verifyJWT } from '../middlewares/auth.middleware.js'
@@ -19,5 +20,6 @@ router.route("/verify-email").post(verifyJWT,verifyEmailOtp)
 router.route("/login").post(loginUser)
 router.route("/refresh-token").post(refreshAccessToken)
 router.route("/logout").post(verifyJWT,logout)
+router.route("/product-to-user-wishlist").post(verifyJWT,addUserWishlist)
 
 export default router

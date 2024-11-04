@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { type } from "os";
 
 const userSchema = new Schema(
     {
@@ -56,16 +57,15 @@ const userSchema = new Schema(
         refreshToken: {
             type: String
         },
-        role: {
-            type: String,
-            enum: ['customer', 'admin'],
-            default: 'customer'
+        // role: {
+        //     type: String,
+        //     enum: ['customer', 'admin'],
+        //     default: 'customer'
+        // },
+        wishlist: {
+            type: [String],
+            default: []
         },
-        wishlist: [
-            {
-                productId: String
-            }
-        ],
         cart: {
             type: Schema.Types.ObjectId,
             ref: 'Cart'

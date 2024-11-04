@@ -17,10 +17,16 @@ app.use(cookieParser());
 
 //routes import
 import userRouter from './routes/user.routes.js';
-
+import cartRouter from './routes/cart.routes.js';
+import paymentRouter from './routes/payment.routes.js';
+import orderRouter from './routes/order.routes.js';
 
 //routes declaration
 app.use("/api/v1/users",userRouter)
+app.use("/api/v1/cart",cartRouter)
+app.use("/api/v1/payment",paymentRouter)
+app.use("/api/v1/order",orderRouter)
+
 // http://localhost:8000/api/v1/users/register
 
 export { app }

@@ -294,6 +294,45 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
 });
 
+const addUserWishlist = asyncHandler(async(req,res)=>{
+
+    const {productId} = req.body;
+    // console.log(productId);
+    if(!productId){
+        return res
+        .status(400)
+        .json(new ApiError(400,"Product Id is missing !"));
+    }
+
+    const userId = req.user?._id;
+    if(!userId){
+        return res
+        .status(400)
+        .json(new ApiError(400,"userId is missing !"));
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+        userId,
+        {
+            $addToSet: {wishlist : productId}
+        },
+        { new:true }
+    ).lean();
+
+    // const isProductInWishlist = updatedUser.wishlist?.includes(productId);
+    // if (!isProductInWishlist) {
+    //     return res
+    //         .status(200)
+    //         .json(new ApiResponse(200, "Product is already added to the Wishlist!"));
+    // }
+    // console.log("Updated User:", updatedUser);
+    // console.log("Updated User Wishlist:", updatedUser?.wishlist);
+
+    return res
+    .status(201)
+    .json(new ApiResponse(201,updatedUser.wishlist,"Product added to the Wishlist successfully!"));
+});
+
 export {
     generateAccessAndRefereshTokens,
     registerUser,
@@ -302,4 +341,5 @@ export {
     loginUser,
     logout,
     refreshAccessToken,
+    addUserWishlist,
 }
