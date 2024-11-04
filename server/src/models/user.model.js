@@ -25,23 +25,24 @@ const userSchema = new Schema(
             trim: true, 
             index: true
         },
-        avatar: {
-            type: String, // cloudinary url
-            required: false,
+        address:{
+            type:String,
+            required:true,
+            street: String,
+            city: String,
+            state: String,
+            zipCode: String,
+
         },
-        coverImage: {
-            type: String, // cloudinary url
+        phone:{
+            type: String,
+            required:true,
+            index:true,
         },
-        watchHistory: [
+        orderHistory: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "Video"
-            }
-        ],
-        subscriptions:[
-            {
-                type:Schema.Types.ObjectId,
-                ref:"Subscriptions"
+                ref: "Order"
             }
         ],
         password: {
@@ -50,6 +51,22 @@ const userSchema = new Schema(
         },
         refreshToken: {
             type: String
+        },
+
+        role:{
+            type:String,
+            enum:['customer' , 'admin'],
+            default: 'customer'
+        },
+        wishlist:[
+            {
+                productId: String,
+            }
+        ],
+
+        cart:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Cart'
         }
 
     },
@@ -94,6 +111,6 @@ userSchema.methods.generateRefreshToken = function(){
             expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
-}
+};
 
 export const User = mongoose.model("User", userSchema)
