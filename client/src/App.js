@@ -6,14 +6,17 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import MainpageLayout from "./Layouts/MainpageLayout/MainpageLayout";
 import HomePage from "./Pages/HomePage/HomePage";
 import ProductPage from './Pages/ProductPage/ProductPage'
-
+import Wishlist from "./Pages/Wishlist/Wishlist";
+import SignUp from "./Pages/Authentication/SignUp/SignUp";
 const router = createBrowserRouter(
 
     createRoutesFromElements(
     <>
+        <Route path='/signup' element={<SignUp />}/>
         <Route path='/' element={<MainpageLayout />}>
             <Route path="/" element={<HomePage/>}/>
             <Route path={`/product/:id`} element={<ProductPage/>}/>
+            <Route path={`/wishlist`} element={<Wishlist/>}/>
         </Route>
     </>
     )

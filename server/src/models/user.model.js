@@ -7,26 +7,24 @@ const userSchema = new Schema(
     {
         email: {
             type: String,
-            required: true,
+            // required: true,
             unique: true,
             lowercase: true,  // fixed typo: 'lowecase' to 'lowercase'
             trim: true
         },
         name: {
             type: String,
-            required: true,
+            // required: true,
             trim: true,
             index: true
         },
         address: {
-            street: { type: String, required: true },
-            city: { type: String, required: true },
-            state: { type: String, required: true },
-            zipCode: { type: String, required: true }
+            type: String, 
+            // required: true
         },
         phoneNumber: {
             type: String,
-            required: true,
+            // required: true,
             unique: true,
             index: true
         },
@@ -52,7 +50,7 @@ const userSchema = new Schema(
         ],
         password: {
             type: String,
-            required: [true, 'Password is required']
+            // required: [true, 'Password is required']
         },
         refreshToken: {
             type: String

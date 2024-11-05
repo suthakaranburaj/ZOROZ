@@ -23,7 +23,8 @@ const generateAccessAndRefereshTokens = async (userId) => {
 }
 
 const registerUser = asyncHandler(async(req, res) =>{
-    // console.log(req.body);
+    console.log(req.body);
+    console.log("Hi")
     const{email, name, password, phoneNumber, address  } = req.body;
     const emailOtp = generateOTP();
     // const phoneNumberOtp = generateOTP();

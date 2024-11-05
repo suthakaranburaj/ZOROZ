@@ -11,7 +11,9 @@ function Navbar() {
             <Link>
                 <NavbarSection title="Home" />
             </Link>
-            <NavbarSection title="WishList" />
+            <Link to="/wishlist">
+                <NavbarSection title="WishList" />
+            </Link>
             <NavbarSection title="View Cart" />
             <NavbarSection title="Order History" />
             <NavbarSection title="Payment History" />
