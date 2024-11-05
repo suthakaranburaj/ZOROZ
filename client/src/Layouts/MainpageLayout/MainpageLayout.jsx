@@ -19,7 +19,10 @@ function MainpageLayout() {
             </div>
             <div className='layoutContainer'>
                 { isNavOpen && 
-                    <div className='leftSide'>
+                    <div 
+                        className='leftSide'
+                        onClick={toggleNav}
+                    >
                         <Navbar/>
                     </div>
                 }
