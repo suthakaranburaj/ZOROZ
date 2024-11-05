@@ -10,6 +10,9 @@ import devStore from '../../store/devStore';
 function SearchBar() {
 
     const { isNavOpen, toggleNav } = devStore(); 
+
+
+
     
     return (
         <div className='containerSearchBar'>

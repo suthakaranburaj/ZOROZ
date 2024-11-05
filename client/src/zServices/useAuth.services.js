@@ -2,9 +2,9 @@ import axios from "axios";
 
 const BACKEND_URL = 'http://localhost:8000/api/v1/users';
 
-const loginUser = async ({ username, email, password }) => {
+const loginUser = async ({ userCredential, password }) => {
     try {
-        const response = await axios.post(`${BACKEND_URL}/login`, { username, email, password });
+        const response = await axios.post(`${BACKEND_URL}/login`, { userCredential, password });
         return response;
     } catch (error) {
         throw error;

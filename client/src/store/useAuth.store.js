@@ -21,15 +21,15 @@ const userAuthStore = create((set)=>({
     isAuthenticated: !!localStorage.getItem("user"),
     watchHistory: [],
 
-    login: async ({ phoneNumber, email, password }) => {
+    loginUser: async ({ userCredential, password }) => {
         set(() => ({ isLoading: true, error: null }));
 
         try {
-            const response = await loginUser({ phoneNumber, email, password });
+            const response = await loginUser({ userCredential, password });
             const userData = response.data.data.user;
             const accessToken = response.data.data.accessToken;
-            // console.log(accessToken);
-            // console.log("response:::::::::",response);
+            console.log(accessToken);
+            console.log("response:::::::::",response);
 
             set({
                 user: userData,

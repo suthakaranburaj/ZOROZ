@@ -1,16 +1,15 @@
-import React from 'react'
+import React from 'react';
+import './NavbarSection.scss';
 
-import './NavbarSection.scss'
-
-function NavbarSection({title}) {
+function NavbarSection({ title, className = '', onClick }) {
     return (
         <>
-        <div className='NavbarSectionContainer'>
-            <p className='titleSection'>{title}</p>
-        </div>
-        <div className='line'></div>
+            <div className={`NavbarSectionContainer ${className}`} onClick={onClick}>
+                <p className='titleSection'>{title}</p>
+            </div>
+            <div className='line'></div>
         </>
-    )
+    );
 }
 
-export default NavbarSection
+export default NavbarSection;

@@ -1,7 +1,7 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
 import {useForm} from 'react-hook-form'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,Link} from 'react-router-dom'
 
 import './SignUp.scss'
 import userAuthStore from '../../../store/useAuth.store';
@@ -15,6 +15,12 @@ function SignUp() {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/');
+        }
+    }, [isAuthenticated, navigate]);
+    
     const onSubmit = async(data)=>{
 
         try {
@@ -70,6 +76,7 @@ function SignUp() {
                     >
                         Submit
                     </button>
+                    <p className='LoginLink'>Already have an account?<Link to="/login"><span className=''> Login</span></Link></p>
             </form>
             {isLoading && (
                     // <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
