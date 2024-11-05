@@ -40,12 +40,12 @@ function Wishlist() {
                         <p>{error}</p>
                     ) : wishlistProducts.length ? (
                         wishlistProducts.map((product) => (
-                            <Link key={product.id} to={`/product/${product.id}`}>
+                            <Link key={product?.id} to={`/product/${product?.id}`}>
                                 <ProductSection 
-                                    id={product.id} 
-                                    image={product.image} 
-                                    title={product.title} 
-                                    price={product.price}
+                                    id={product?.id} 
+                                    image={product?.image} 
+                                    title={product?.title} 
+                                    price={product?.price}
                                 />
                             </Link>
                         ))

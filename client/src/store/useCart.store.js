@@ -15,7 +15,6 @@ const useCartStore = create((set)=>({
 
     viewCart : async()=>{
         set({isLoading:true, error:null});
-
         try {
             const response = await viewCartService();
             set({
@@ -25,6 +24,27 @@ const useCartStore = create((set)=>({
                 userCartItems:response.data.data.items
             })
             return response.data.data;
+        } catch (error) {
+            set({
+                error:error.response?.message.data || "Fetching of Products failed !",
+                isLoading:false,
+            })
+            return false;
+        }
+    },
+
+    addItemToCart: async({productId,price})=>{
+        set({isLoading:true, error:null});
+
+        try {
+            const response = await addItemToCartService({productId,price});
+            set({
+                userCart:response.data.data,
+                isLoading:false,
+                error:null,
+                userCartItems:response.data.data.items
+            })
+            return response;
         } catch (error) {
             set({
                 error:error.response?.message.data || "Fetching of Products failed !",

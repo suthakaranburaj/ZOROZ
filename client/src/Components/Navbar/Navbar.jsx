@@ -1,16 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import './Navbar.scss'
-import './NavbarSection/NavbarSection'
 import NavbarSection from './NavbarSection/NavbarSection'
 import userAuthStore from '../../store/useAuth.store'
 import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
-
     const navigate = useNavigate();
-    const {isAuthenticated, isLoading, logout} = userAuthStore();
+    const { isAuthenticated, logout, user } = userAuthStore();
+
+    const handleNavigation = (path) => {
+        if (isAuthenticated) {
+            navigate(path);
+        } else {
+            navigate('/signup');
+        }
+    };
 
     const submitHandler = () => {
         if (isAuthenticated) {
@@ -22,22 +27,26 @@ function Navbar() {
 
     return (
         <div className='NavbarContainer'>
-            <Link>
+            <div onClick={() => handleNavigation('/')}>
                 <NavbarSection title="Home" />
-            </Link>
-            <Link to="/wishlist">
+            </div>
+            <div onClick={() => handleNavigation('/wishlist')}>
                 <NavbarSection title="WishList" />
-            </Link>
-            <NavbarSection title="View Cart" />
-            <NavbarSection title="Order History" />
-            <NavbarSection title="Payment History" />
-            <NavbarSection 
-                className="logoutButton cursor-pointer" 
-                onClick={submitHandler} 
-                title={isAuthenticated ? "Logout" : "SignUp"} 
-            />
+            </div>
+            <div onClick={() => handleNavigation(`/${user?._id}/cart`)}>
+                <NavbarSection title="View Cart" />
+            </div>
+            <div onClick={() => handleNavigation('/order-history')}>
+                <NavbarSection title="Order History" />
+            </div>
+            <div onClick={submitHandler}>
+                <NavbarSection 
+                    className="logoutButton cursor-pointer" 
+                    title={isAuthenticated ? "Logout" : "SignUp"} 
+                />
+            </div>
         </div>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;

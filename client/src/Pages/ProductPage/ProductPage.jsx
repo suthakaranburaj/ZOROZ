@@ -8,12 +8,15 @@ import useProductStore from '../../store/useProduct.store'
 import ProductSection from '../HomePage/ProductSection/ProductSection'
 import Loader from '../../Components/Loader/Loader';
 import userAuthStore from '../../store/useAuth.store';
+import useCartStore from '../../store/useCart.store';
 
 function ProductPage() {
 
     const { allProducts, getProducts, isLoading } = useProductStore();
 
     const {addUserWishlist, userWishlist} = userAuthStore();
+
+    const {addItemToCart} = useCartStore();
 
     const loader = useRef(null);
 
@@ -58,6 +61,12 @@ function ProductPage() {
     const productId = id;
     const handleUpdateWishList = async(productId)=>{
         await addUserWishlist(productId);
+        alert("Product Added to wishlist successfully !")
+    }
+
+    const handleAddToCart = async(price)=>{
+        await addItemToCart({productId,price});
+        alert("Product added to Cart successfully !")
     }
 
     return (
@@ -71,7 +80,10 @@ function ProductPage() {
                 <p className='productionSectionContainer22'>{product?.description}</p>
                 <p className='productionSectionContainer23'>Price:${product?.price}</p>
                 <div className='productionSectionContainer24'>
-                    <button className='productionSectionContainer241'>
+                    <button 
+                        className='productionSectionContainer241'
+                        onClick={()=>handleAddToCart(product?.price)}
+                    >
                         Add to Cart
                     </button>
                     <button 
@@ -86,13 +98,13 @@ function ProductPage() {
         <p className='viewMore'>View more</p>
         <div className='Products'>
             {allProducts.map((product) => (
-                id != product.id &&(
-                    <Link key={product.id} to={`/product/${product.id}`}>
+                id != product?.id &&(
+                    <Link key={product?.id} to={`/product/${product?.id}`}>
                         <ProductSection 
-                            id={product.id} 
-                            image={product.image} 
-                            title={product.title} 
-                            price={product.price}
+                            id={product?.id} 
+                            image={product?.image} 
+                            title={product?.title} 
+                            price={product?.price}
                         />
                     </Link>
                 )

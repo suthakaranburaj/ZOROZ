@@ -19,8 +19,8 @@ function Cart() {
     return (
         <>  <p className='yourCart'>Your Cart</p>
             <div className='cartContainer'>
-                {userCart.items && userCart.items.length > 0 ? (
-                    userCart.items.map((item) => (
+                {userCart?.items && userCart?.items?.length > 0 ? (
+                    userCart?.items?.map((item) => (
                         <CartItemCard 
                             key={item?.productId} // Use a unique key for each item
                             productId={item?.productId}

@@ -12,6 +12,8 @@ import Login from "./Pages/Authentication/Login/Login";
 import Cart from './Pages/Cart/Cart'
 import Order from "./Pages/Order/Order";
 import Payment from "./Pages/Payment/Payment";
+import OrderHistory from "./Pages/OrderHistory/OrderHistory";
+import PaymentHistory from "./Pages/PaymentHistory/PaymentHistory";
 const router = createBrowserRouter(
 
     createRoutesFromElements(
@@ -25,6 +27,8 @@ const router = createBrowserRouter(
             <Route path={`/:userId/Cart`} element={<Cart/>}/>
             <Route path={`/order`} element={<Order/>}/>
             <Route path={`/order/:orderId/payment`} element={<Payment/>}/>
+            <Route path={`/order-history`} element={<OrderHistory/>}/>
+            <Route path={`/payment-history`} element={<PaymentHistory/>}/>
         </Route>
     </>
     )

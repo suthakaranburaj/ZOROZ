@@ -38,7 +38,7 @@ function Order() {
                 <p className='OrderContainer14'>{user?.email}</p>
             </div>
             <div className='OrderContainer2'>
-                <p className='OrderContainer21'>Total Items:{userCart?.items.length}</p>
+                <p className='OrderContainer21'>Total Items:{userCart?.items?.length}</p>
                 <p className='OrderContainer22'>Total Amount:{userCart?.totalPrice}</p>
             </div>
             <div className='OrderContainer3'>

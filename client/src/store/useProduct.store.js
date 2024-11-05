@@ -7,7 +7,7 @@ const useProductStore = create((set)=>({
     allProducts: [],
     isLoading: false,
     error: null,
-    limit: 1,
+    limit: 3,
     product:null,
 
     getProducts : async()=>{
@@ -22,7 +22,7 @@ const useProductStore = create((set)=>({
 
             set((state) => ({
                 allProducts: data,
-                limit: state.limit + 1,
+                limit: state.limit + 3,
                 isLoading: false
             }));
             return true;

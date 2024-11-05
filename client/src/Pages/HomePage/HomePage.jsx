@@ -40,11 +40,11 @@ function HomePage() {
             <div className='Products'>
             {allProducts.map((product) => (
                 <ProductSection 
-                    key={product.id}
-                    id={product.id} 
-                    image={product.image} 
-                    title={product.title} 
-                    price={product.price}
+                    key={product?.id}
+                    id={product?.id} 
+                    image={product?.image} 
+                    title={product?.title} 
+                    price={product?.price}
                 />
             ))}
             </div>

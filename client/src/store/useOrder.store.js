@@ -13,6 +13,7 @@ const useOrderStore = create((set)=>({
     currentOrder:[],
     isLoading:false,
     error:null,
+    userOrderHistory:[],
 
     placeOrder : async({items , totalAmount})=>{
         set({isLoading:true,error:null});
@@ -28,6 +29,26 @@ const useOrderStore = create((set)=>({
         } catch (error) {
             set({
                 error:error.response?.message.data || "Fetching of Products failed !",
+                isLoading:false,
+            })
+            return false;
+        }
+    },
+
+    getOrdersHistory: async(userId)=>{
+        set({isLoading:true,error:null});
+        try {
+            const response = await getOrderHistoryServices(userId);
+            set({
+                isLoading:false,
+                error:null,
+                userOrderHistory:response.data.data,
+            })
+            // console.log(response.data.data)
+            return response;
+        } catch (error) {
+            set({
+                error:error?.response?.message.data || "Fetching of Products failed !",
                 isLoading:false,
             })
             return false;
