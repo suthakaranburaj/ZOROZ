@@ -1,9 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import './Navbar.scss'
+import './NavbarSection/NavbarSection'
+import NavbarSection from './NavbarSection/NavbarSection'
 
 function Navbar() {
     return (
-        <div>
-        
+        <div className='NavbarContainer'>
+            <Link>
+                <NavbarSection title="Home" />
+            </Link>
+            <NavbarSection title="WishList" />
+            <NavbarSection title="View Cart" />
+            <NavbarSection title="Order History" />
+            <NavbarSection title="Payment History" />
+            {/* <NavbarSection title="SignUp" /> */}
         </div>
     )
 }

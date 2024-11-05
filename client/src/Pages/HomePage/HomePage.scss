@@ -1,0 +1,21 @@
+@import '../../index.scss';
+
+.homePageContainer{
+    padding-top: 57px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .Products{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding:20px 50px;
+    }
+    .loadingIndicator{
+        // justify-content: center;
+        font-size: 26px;
+        font-weight: 400;
+    }
+    // background-color: red;
+}

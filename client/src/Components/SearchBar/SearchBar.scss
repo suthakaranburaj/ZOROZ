@@ -1,0 +1,61 @@
+@import '../../index.scss';
+
+.containerSearchBar{
+    height: 57px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1.25rem;
+    align-items: center;
+    color: $text-color;
+    width: 100%;
+    position: fixed;
+    .icon{
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    .cart-container{
+        margin-right: 25px;
+        .cart-icon{
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .cart-count{
+            position: absolute;
+            top: 5px;
+            right: 25px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+    }
+    .searchBarContainer{
+        width: 30vw;
+        height: 35px;
+        .search-input{
+            width: 90%;
+            height: 100%;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            padding: 3px 20px;
+        }
+        .search-button{
+            width: 10%;
+            background-color: rgb(255, 140, 0);
+            height: 100%;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            .search-icon{
+                font-size: 22px;
+            }
+        }
+    }
+    
+}

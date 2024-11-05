@@ -1,0 +1,56 @@
+@import '../../../index.scss';
+
+.productSectionContainer{
+    display: flex;
+    flex-direction: column;
+
+    background-color: wheat;
+    padding: 10px;
+
+
+    height: 30vw;
+    width: 25vw;
+
+    margin: 10px 50px 0 0 ;
+
+    cursor: pointer;
+    &1{
+        height: 65%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        &1{
+            
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &2{
+        &1{
+            font-weight: 600;
+            font-size: 22px;
+        }
+        &2{
+            font-size: 26px;
+            // font-weight: 600;
+            color: red;
+        }
+    }
+    .buttonSection{
+        width: 100%;
+
+        margin-top: 20px;
+
+        display: flex;
+        justify-content: space-between;
+
+        &1,&2{
+            background-color: yellow;
+            font-size: 20px;
+
+            padding: 10px 20px;
+        }
+    }
+}
