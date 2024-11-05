@@ -1,0 +1,36 @@
+.OrderContainer{
+    padding: 100px;
+    width: 60vw;
+    display: flex;
+    justify-content: space-between;
+    &1{
+        &1{
+            font-size: 26px;
+        }
+    }
+
+    &2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &1,&2{
+            font-size: 24px;
+        }
+    }
+
+    &3{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &1{
+            background-color: red;
+            font-size: 22px;
+            padding: 20px 10px;
+            border-radius: 10px;
+            &:active{
+                background-color: rgb(242, 125, 125);
+            }
+        }
+    }
+}

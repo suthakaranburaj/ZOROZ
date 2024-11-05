@@ -1,0 +1,43 @@
+.cartContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 100px 5%;
+
+    &1{
+
+    }
+
+    &2{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 5%;
+        &1{
+            font-size: 32px;
+            font-weight: 600;
+            margin: 20px 5px;
+            span{
+                color: red;
+            }
+        }
+        &2{
+            background-color: rgb(255, 119, 0);
+            font-size: 35px;
+            padding: 10px 25px;
+            border-radius: 10px;
+        }
+    }
+}
+.yourCart{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 57px;
+    width: 100%;
+    background-color: white;
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}

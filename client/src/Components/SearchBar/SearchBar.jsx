@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './SearchBar.scss'
 
@@ -8,11 +8,17 @@ import { faBars, faTimes, faSearch ,faCartShopping} from '@fortawesome/free-soli
 import devStore from '../../store/devStore';
 import userAuthStore from '../../store/useAuth.store';
 import { Link } from 'react-router-dom';
+import useCartStore from '../../store/useCart.store';
 
 function SearchBar() {
 
     const { isNavOpen, toggleNav } = devStore(); 
     const {isAuthenticated , user,isLoading,error} = userAuthStore();
+    const { viewCart, userCartItems } = useCartStore(); // Retrieve userCart from the store
+
+    useEffect(() => {
+        viewCart(); // Load cart data on component mount
+    }, [viewCart]);
 
     
     return (
@@ -41,7 +47,7 @@ function SearchBar() {
                         icon={faCartShopping} 
                         className='cart-icon' 
                     />
-                    <span className="cart-count">1</span>
+                    <span className="cart-count">{userCartItems?.length || 0}</span>
                 </div>
             </Link>
         </div>

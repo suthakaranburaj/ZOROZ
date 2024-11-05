@@ -1,7 +1,6 @@
 import { create } from "zustand";
 
 import {fetchAllProductsService, getAProductService} from '../zServices/useProduct.services.js'
-import { faL, faLadderWater } from "@fortawesome/free-solid-svg-icons";
 
 const useProductStore = create((set)=>({
 
@@ -46,7 +45,7 @@ const useProductStore = create((set)=>({
                 error:null,
                 product:response,
             })
-            // console.log('Product set:', response);
+            console.log('Product set:', response);
             return response;
         } catch (error) {
             set({

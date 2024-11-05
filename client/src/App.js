@@ -10,6 +10,8 @@ import Wishlist from "./Pages/Wishlist/Wishlist";
 import SignUp from "./Pages/Authentication/SignUp/SignUp";
 import Login from "./Pages/Authentication/Login/Login";
 import Cart from './Pages/Cart/Cart'
+import Order from "./Pages/Order/Order";
+import Payment from "./Pages/Payment/Payment";
 const router = createBrowserRouter(
 
     createRoutesFromElements(
@@ -21,6 +23,8 @@ const router = createBrowserRouter(
             <Route path={`/product/:id`} element={<ProductPage/>}/>
             <Route path={`/wishlist`} element={<Wishlist/>}/>
             <Route path={`/:userId/Cart`} element={<Cart/>}/>
+            <Route path={`/order`} element={<Order/>}/>
+            <Route path={`/order/:orderId/payment`} element={<Payment/>}/>
         </Route>
     </>
     )

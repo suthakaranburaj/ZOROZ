@@ -23,9 +23,9 @@ const initiatePaymentServices = async({orderId, amount, paymentMethod})=>{
     }
 }
 
-const confirmPaymentServices = async(paymentId) =>{
+const confirmPaymentServices = async({paymentId,transactionId,paymentStatus}) =>{
     try {
-        const response = await axios.post(`${BACKEND_URL}/confirm/${paymentId}`,{
+        const response = await axios.post(`${BACKEND_URL}/confirm/${paymentId}`,{transactionId,paymentStatus},{
             headers: {
                 Authorization: `Bearer ${getToken()}`,
                 'Content-Type': 'application/json',

@@ -1,0 +1,65 @@
+.CartItemCard {
+    display: flex;
+    flex-direction: row; // Stack items vertically
+    justify-content: space-between;
+    border: 1px solid #ddd; // Light border for separation
+    border-radius: 8px; // Rounded corners
+    padding: 16px; // Space inside the card
+    margin: 10px; // Space between cards
+    background-color: #fff; // White background
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  
+    // Styles for the image container
+    .CartItemCard1{
+      width: 20vw;
+      height: 15vw;
+      img {
+        width: 100%; // Make the image responsive
+        height: 100%; // Maintain aspect ratio
+        border-radius: 8px; // Rounded corners for the image
+      }
+    }
+  
+    .CartItemCard2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+      &1{
+        width: 50vw;
+        font-weight: 600;
+        font-size: 26px;
+        span{
+        color: red;
+        }
+      }
+
+      &2{
+        font-size: 20px;
+        span{
+        color: red;
+        }
+      }
+
+      &3{
+        font-size: 20px;
+        span{
+        color: red;
+        }
+
+      }
+    }
+    .CartItemCard3{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      &1,&2{
+        padding: 10px 20px;
+        background-color: red;
+        border-radius: 5px;
+        &:active{
+          background-color: rgb(254, 81, 81);
+        }
+      }
+    }
+  }
+  
