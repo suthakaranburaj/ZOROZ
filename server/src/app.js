@@ -5,7 +5,10 @@ import cookieParser from "cookie-parser"
 const app = express()
 
 app.use(cors({
-    origin:'https://zoroz-suthakar-anburajs-projects.vercel.app',
+    origin:[
+            'https://zoroz-suthakar-anburajs-projects.vercel.app',
+        'https://zoroz-grxbla0jz-suthakar-anburajs-projects.vercel.app'
+    ],
     credentials: true
 }));
 
