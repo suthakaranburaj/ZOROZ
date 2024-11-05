@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { registerUser,loginUser } from "../zServices/useAuth.services.js";
+import { registerUser,loginUser, addUserWishlistService } from "../zServices/useAuth.services.js";
 
 const getStoredUser = () => {
     const storedUser = localStorage.getItem("user");
@@ -19,7 +19,8 @@ const userAuthStore = create((set)=>({
     error: null,
     isLoading: false,
     isAuthenticated: !!localStorage.getItem("user"),
-    watchHistory: [],
+    userWishlist: [],
+
 
     loginUser: async ({ userCredential, password }) => {
         set(() => ({ isLoading: true, error: null }));
@@ -29,13 +30,15 @@ const userAuthStore = create((set)=>({
             const userData = response.data.data.user;
             const accessToken = response.data.data.accessToken;
             console.log(accessToken);
-            console.log("response:::::::::",response);
+            console.log("response:::::::::",response.data.data.user.wishlist);
+
 
             set({
                 user: userData,
                 isAuthenticated: true,
                 isLoading: false,
-                error: null
+                error: null,
+                userWishlist: response.data.data.user.wishlist,
             });
 
             localStorage.setItem("user", JSON.stringify(userData));
@@ -94,6 +97,24 @@ const userAuthStore = create((set)=>({
             })
         }
     },
+
+    addUserWishlist : async(productId)=>{
+        set({isLoading:true , error:null})
+        try {
+            const response = await addUserWishlistService({productId});
+            console.log(response.data.data)
+            set({
+                isLoading:false,
+                error:null,
+                userWishlist:response.data.data
+            })
+            return response;
+        } catch (error) {
+            set({
+                error: error?.response?.data?.message,
+            })
+        }
+    }
 }));
 
 export default userAuthStore;

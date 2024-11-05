@@ -298,7 +298,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 const addUserWishlist = asyncHandler(async(req,res)=>{
 
     const {productId} = req.body;
-    // console.log(productId);
+    console.log(productId);
     if(!productId){
         return res
         .status(400)
@@ -315,7 +315,7 @@ const addUserWishlist = asyncHandler(async(req,res)=>{
     const updatedUser = await User.findByIdAndUpdate(
         userId,
         {
-            $addToSet: {wishlist : productId}
+            $addToSet: {wishlist : productId.productId}
         },
         { new:true }
     ).lean();

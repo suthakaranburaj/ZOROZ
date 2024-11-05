@@ -7,10 +7,13 @@ import './Product.scss'
 import useProductStore from '../../store/useProduct.store'
 import ProductSection from '../HomePage/ProductSection/ProductSection'
 import Loader from '../../Components/Loader/Loader';
+import userAuthStore from '../../store/useAuth.store';
 
 function ProductPage() {
 
     const { allProducts, getProducts, isLoading } = useProductStore();
+
+    const {addUserWishlist, userWishlist} = userAuthStore();
 
     const loader = useRef(null);
 
@@ -52,6 +55,11 @@ function ProductPage() {
         };
     }, [handleIntersection]);
 
+    const productId = id;
+    const handleUpdateWishList = async(productId)=>{
+        await addUserWishlist(productId);
+    }
+
     return (
         <>
         <div className='productionSectionContainer'>
@@ -66,7 +74,10 @@ function ProductPage() {
                     <button className='productionSectionContainer241'>
                         Add to Cart
                     </button>
-                    <button className='productionSectionContainer242'>
+                    <button 
+                        className='productionSectionContainer242'
+                        onClick={()=>handleUpdateWishList(product?.id)}
+                    >
                         WishList
                     </button>
                 </div>

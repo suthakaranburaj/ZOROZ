@@ -8,16 +8,16 @@ import useProductStore from '../../store/useProduct.store';
 import Loader from '../../Components/Loader/Loader';
 
 function Wishlist() {
-    const { user, isAuthenticated } = userAuthStore();
+    const { user, isAuthenticated, userWishlist } = userAuthStore();
     const { getAProduct, isLoading, error } = useProductStore();
     
     const [wishlistProducts, setWishlistProducts] = useState([]);
 
     useEffect(() => {
         const fetchWishlistProducts = async () => {
-            if (user?.wishlist?.length) {
+            if (userWishlist?.length) {
                 const products = await Promise.all(
-                    user.wishlist.map(async (id) => {
+                    userWishlist.map(async (id) => {
                         const product = await getAProduct(id);
                         return product;
                     })
@@ -26,7 +26,8 @@ function Wishlist() {
             }
         };
         fetchWishlistProducts();
-    }, [user?.wishlist, getAProduct]);
+        // console.log(user?.wishlist.length)
+    }, [userWishlist, getAProduct,]);
 
     return (
         <>
