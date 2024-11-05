@@ -6,7 +6,7 @@ const getToken = () => {
     return accessToken; // Adjust based on how you store the token
 };
 
-const BACKEND_URL = "http://localhost:8000/api/v1/cart";
+const BACKEND_URL = "https://zoroz-lgbv.onrender.com/api/v1/cart";
 
 const viewCartService = async()=>{
     try {

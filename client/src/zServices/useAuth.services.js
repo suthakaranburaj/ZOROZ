@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BACKEND_URL = 'http://localhost:8000/api/v1/users';
+const BACKEND_URL = 'https://zoroz-lgbv.onrender.com/api/v1/users';
 const getToken = () => {
     const accessToken = localStorage.getItem("accessToken");
     // console.log(accessToken)
