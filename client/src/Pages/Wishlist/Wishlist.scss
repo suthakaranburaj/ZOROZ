@@ -1,7 +1,27 @@
 .wishlistContainer{
-    margin-top: 100px;
+
+    padding: 100px 5% 0 5%;
+    
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    // padding: 2% 5%;
 
     .wishlistContainer1{
         font-size: 30px;
     }
+
+    .userWishlist{
+
+        font-weight: 700;
+        position: fixed;
+        font-size: 26px;
+        top: 0;
+        left: 0;
+        margin-top: 50px;
+        margin-left: 5%;
+        width: 100%;
+        background-color: white;
+    }
+
 }

@@ -35,7 +35,9 @@ const registerUser = async ({ email, name, password, address, phoneNumber }) => 
     }
 };
 
+// const getUserWishlist = async() =>{
 
+// }
 
 export {
     loginUser,

@@ -6,6 +6,7 @@ import './Product.scss'
 
 import useProductStore from '../../store/useProduct.store'
 import ProductSection from '../HomePage/ProductSection/ProductSection'
+import Loader from '../../Components/Loader/Loader';
 
 function ProductPage() {
 
@@ -89,6 +90,13 @@ function ProductPage() {
         <div ref={loader} className='loadingIndicator'>
                 <p>Scroll down for more products</p>
         </div>
+        {isLoading && (
+                    // <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    //     <ClipLoader size={50} color="#ffffff" />
+                    //     <p>Registering your account...</p>
+                    // </div>
+                    <Loader/>
+        )}
         </>
     )
 }
