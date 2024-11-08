@@ -40,7 +40,7 @@ const addItemToCartService = async({productId,price})=>{
 
 const removeItemFromCartService = async(productId)=>{
     try {
-        const response = await axios.delete(`${BACKEND_URL}/remove`,{productId},{
+        const response = await axios.delete(`${BACKEND_URL}/remove/${productId}`,{
             headers: {
                 Authorization: `Bearer ${getToken()}`,
                 'Content-Type': 'application/json',
