@@ -34,7 +34,7 @@ const useCartStore = create((set)=>({
     },
 
     addItemToCart: async({productId,price})=>{
-        set({isLoading:true, error:null});
+        set({isLoading:false, error:null});
 
         try {
             const response = await addItemToCartService({productId,price});
@@ -77,7 +77,7 @@ const useCartStore = create((set)=>({
     },
 
     removeItemFromCart: async(productId) =>{
-        set({isLoading:true, error:null});
+        set({isLoading:false, error:null});
 
         try {
             const response = await removeItemFromCartService(productId)
