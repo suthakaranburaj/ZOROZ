@@ -8,7 +8,8 @@ app.use(cors({
     origin:[
             'https://zoroz-suthakar-anburajs-projects.vercel.app',
         'https://zoroz-grxbla0jz-suthakar-anburajs-projects.vercel.app',
-        'https://zoroz-ten.vercel.app'
+        'https://zoroz-ten.vercel.app',
+        'http://localhost:8000'
     ],
     credentials: true
 }));
