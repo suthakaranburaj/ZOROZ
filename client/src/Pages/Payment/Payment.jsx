@@ -9,7 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 function Payment() {
     const { initiatePayment, isLoading, error, confirmPayment ,currentPayment} = usePaymentStore();
-    const { userCart } = useCartStore();
+    const { userCart,clearCart } = useCartStore();
     const { orderId } = useParams();
 
     // State to manage selected payment method
@@ -43,6 +43,7 @@ function Payment() {
         // Call confirmPayment from the store
         await confirmPayment({ paymentId:currentPayment?._id, transactionId, paymentStatus:"success" });
         setIsPaymentInitiated(false); // Reset the payment form
+        await clearCart();
         alert("Payment Done successfully !")
         navigate('/');
     };

@@ -40,7 +40,7 @@ function Cart() {
                         </button>
                     </Link>
                 </div>
-                
+                <Link to='/order-history'><p className='view-history-header'>View Order History</p></Link>
             </div>
             {isLoading && (
                 <Loader />

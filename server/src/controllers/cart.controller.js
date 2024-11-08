@@ -46,7 +46,8 @@ const addItemToCart = asyncHandler(async(req,res)=>{
 });
 
 const removeItemFromCart = asyncHandler(async(req,res)=>{
-    const {productId} = req.body;
+    const {productId} = req.params;
+    // console.log(productId);
     if(!productId){
         return res
         .status(400)

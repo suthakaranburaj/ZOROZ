@@ -21,7 +21,7 @@ const usePaymentStore = create((set)=>({
                 error:null,
                 currentPayment:response.data.data,
             })
-            console.log(response.data.data)
+            // console.log(response.data.data)
             return response;
         } catch (error) {
             set({
@@ -40,7 +40,7 @@ const usePaymentStore = create((set)=>({
                 isLoading:false,
                 error:null,
             })
-            console.log(response.data)
+            // console.log(response.data)
             return response;
         } catch (error) {
             set({

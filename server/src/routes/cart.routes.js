@@ -11,7 +11,7 @@ import { verifyJWT } from '../middlewares/auth.middleware.js'
 const router = Router();
 
 router.route('/add').post(verifyJWT,addItemToCart)
-router.route('/remove').delete(verifyJWT,removeItemFromCart)
+router.route('/remove/:productId').delete(verifyJWT,removeItemFromCart)
 router.route('/view').get(verifyJWT,viewCart)
 router.route('/clear').delete(verifyJWT,clearCart)
 

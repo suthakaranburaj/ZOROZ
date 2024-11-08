@@ -52,6 +52,50 @@ const useCartStore = create((set)=>({
             })
             return false;
         }
+    },
+
+    clearCart : async() => {
+        set({isLoading:true, error:null});
+
+        try {
+            const response = await clearCartService();
+            set({
+                isLoading:false,
+                error:null,
+                userCartItems:[],
+                userCart:{}
+            })
+
+            return response;
+        } catch (error) {
+            set({
+                error:error.response?.message.data || "Fetching of Products failed !",
+                isLoading:false,
+            })
+            return false;
+        }
+    },
+
+    removeItemFromCart: async(productId) =>{
+        set({isLoading:true, error:null});
+
+        try {
+            const response = await removeItemFromCartService(productId)
+            set({
+                isLoading:false,
+                error:null,
+                userCartItems:response.data.data.items,
+                userCart:response.data.data,
+            })
+            console.log(response.data)
+            return response;
+        } catch (error) {
+            set({
+                error:error.response?.message || "Fetching of Products failed !",
+                isLoading:false,
+            })
+            return false;
+        }
     }
 }))
 

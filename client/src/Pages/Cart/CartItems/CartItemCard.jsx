@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 import useProductStore from '../../../store/useProduct.store';
 import './CartItemCard.scss';
+import useCartStore from '../../../store/useCart.store';
 
 function CartItemCard({ productId, price, quantity }) {
     const { getAProduct } = useProductStore();
     const [localProduct, setLocalProduct] = useState(null);
+    const {addItemToCart,removeItemFromCart} = useCartStore();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -14,6 +16,14 @@ function CartItemCard({ productId, price, quantity }) {
         };
         fetchData();
     }, [productId, getAProduct]);
+
+    const handleAddItem = async({productId, price}) =>{
+        await addItemToCart({productId,price});
+    }
+
+    const handleDeleteItem = async(productId) =>{
+        await removeItemFromCart(productId);
+    }
 
     return (
         <div className='CartItemCard'>
@@ -26,10 +36,10 @@ function CartItemCard({ productId, price, quantity }) {
                 <p className='CartItemCard23'>Price:$<span>{price}</span></p>
             </div>
             <div className='CartItemCard3'>
-                <button className='CartItemCard31'>
+                <button onClick={()=>handleAddItem({productId,price})} className='CartItemCard31'>
                     Add
                 </button>
-                <button className='CartItemCard32'>
+                <button onClick={()=>handleDeleteItem(productId)} className='CartItemCard32'>
                     Remove
                 </button>
             </div>
